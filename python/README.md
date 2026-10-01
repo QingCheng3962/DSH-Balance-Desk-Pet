@@ -1,3 +1,13 @@
+> ## ⚠️ 改版声明（Modified / Derivative Version）
+>
+> 本仓库是 **B站月匠** 原创作品 **DeepSeek-Balance-Whale-Widget** 的**改版（衍生作品）**，原项目与其中全部主要代码、设计、素材的著作权归原作者所有。
+>
+> - 原作者 B 站主页：<https://space.bilibili.com/345797244>
+> - 原作者 GitHub 仓库：<https://github.com/MeteorNOX/DeepSeek-Balance-Whale-Widget>
+> - 本改版仓库：<https://github.com/QingCheng3962/DSH-Balance-Desk-Pet>
+>
+> 本仓库仅在原作品基础上进行修改与再分发，保留原作者的 MIT 许可与其署名（见 [LICENSE](LICENSE) 与 [PROVENANCE.md](PROVENANCE.md)）。
+
 # DSH 小鲸鱼挂件 · Python 桌面版
 
 Bongo Cat Mver 形态的桌面宠物：**一个贴着桌面的小透明窗口，只有鲸鱼本体能点，其余像素点击直接穿透到桌面**；可拖动、悬停会放大、按下 Q 弹并有音效；右键出菜单，双击刷余额，滚轮调大小；支持开机自启。
