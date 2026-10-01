@@ -63,7 +63,7 @@ $env:DSHW_ASSETS = "D:\path\to\DSH-Whale-Widget\assets"
 | 右键 | 菜单（见下） |
 | Esc | 退出 |
 
-### 点击压缩：照抄原版的数值与曲线
+### 点击压缩：对齐原版的数值与曲线
 
 原版按下去就一行 `body.style.transform = SQUISH`：
 
@@ -109,7 +109,7 @@ var SQUISH = 'scaleY(0.88) scaleX(1.05)'
 > 「全局穿透」故意**不跨启动保留**：它会让整只挂件（含右键菜单）都不吃鼠标，
 > 一旦被记住就再也点不回来了。重启挂件即可恢复可交互。
 
-## 气泡：直接抄原版的 SVG（不是照着眼睛画）
+## 气泡：直接使用原版的 SVG（不是照着眼睛画）
 
 气泡**原样**使用 `assets/whale-widget.js:11552` 里那段 SVG —— 路径数据、填充、描边、
 两个点、文字区位置全部照搬，见 [whale_svg.py](whale_svg.py)：
@@ -131,7 +131,7 @@ var SQUISH = 'scaleY(0.88) scaleX(1.05)'
 用 Pillow 画出同样的填充与**跨在路径上**的描边（stroke 18 → 内 9 / 外 9），
 文字写在原版的文字区里（中心 44.25%/36%、可用 66%×64%、颜色 #536ba9）。
 
-**怎么证明抄对了**：用 Chromium（仓库里现成的 Electron）把同一段 SVG 原样渲染成 PNG,
+**怎么证明还原准确**：用 Chromium（仓库里现成的 Electron）把同一段 SVG 原样渲染成 PNG,
 再和 Pillow 的输出逐像素比 —— 见 [`render_svg_ref.js`](render_svg_ref.js)：
 
 | 对比 | 显著差异(>40) | 轻微差异(>8) |
@@ -175,9 +175,9 @@ var SQUISH = 'scaleY(0.88) scaleX(1.05)'
 > 时 Tk 根本不更新坐标 —— 用它测"跟随"必然误判。所以自检里改用 Win32 `GetWindowRect`
 > 取绝对坐标，并且短暂显示窗口再测。
 
-### 台词预设、权重、行样式与配色（全部抄源码）
+### 台词预设、权重、行样式与配色（全部取自源码）
 
-**预设与权重** —— `whale_presets.py` 逐行抄自 `whale-widget.js:11799` 的 `RANDOM_GROUPS`：
+**预设与权重** —— `whale_presets.py` 逐行取自 `whale-widget.js:11799` 的 `RANDOM_GROUPS`：
 
 | 组 | 权重 | 内容 |
 |---|---|---|
@@ -209,7 +209,7 @@ var SQUISH = 'scaleY(0.88) scaleX(1.05)'
 （14 套渐变方案：candy/rouge/bamboo/aurora/deepsea/sunset/forest/champagne/lavender/mint/lava/galaxy/ink/indigo，
 各含 6–11 个 RGB 停点），加上纯色名与基色 `#536ba9`。文字渐变按原版的 `90deg` 横向铺在字形上。
 
-## 自定义泡泡编辑器（抄原版，与 DSH 共用同一份配置）
+## 自定义泡泡编辑器（复刻原版，与 DSH 共用同一份配置）
 
 右键菜单 **「编辑气泡…」** 打开（[whale_editor.py](whale_editor.py)）。它读写的就是
 **DSH 网页端那份** `$DSH_HOME/.dshw-bubble.json`：
@@ -283,7 +283,7 @@ var SQUISH = 'scaleY(0.88) scaleX(1.05)'
 **自动适配**：按 `u` 算出字号后，若整块内容超出椭圆内接矩形，再整体等比缩小
 （原版靠字号随挂件缩放；这里多兜一层，保证长句不会戳出气泡）。
 
-## 说话弹出（照抄原版）
+## 说话弹出（对齐原版）
 
 原版前端（`whale-widget.js`）的气泡是三层 SVG 错时"充气"+ 文字延迟淡入：
 
@@ -307,7 +307,7 @@ var SQUISH = 'scaleY(0.88) scaleX(1.05)'
 > （已用 `GetLayeredWindowAttributes` 验证：`LWA_COLORKEY` 与 `LWA_ALPHA` 同时置位，
 > 淡入期间色键仍然生效），缩放则走重绘。
 
-**点击语义也照抄原版**：
+**点击语义也对齐原版**：
 
 - **点鲸鱼**：没泡泡 → 从第 1 项开始；正显示第 1 项 → 只**续时**不清内容；
   第 2 项及以后 → 回到第 1 项；**系统提醒（预警/消耗）期间点鲸鱼不动作**
